@@ -11,4 +11,18 @@ pipeline {
             }
         }
      }
+     post {
+        always {
+            echo "Always: gass terusss!"
+        }
+        success {
+            echo "Success: yeay aman:)"
+        }
+        failure {
+            echo "Failure: yahh error:("
+        }
+        cleanup {
+            echo "Cleanup: aman or error gazz:v"
+        }
+     }
 }
