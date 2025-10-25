@@ -1,12 +1,21 @@
 pipeline {
+    agent none
+    /*
     agent {
         node {
             label "linux && java11"
         }
     }
+    */
      stages {
         stage ("Build") {
-            steps {
+        agent {
+                node {
+                    label "linux && java11"
+                }
+            }
+        }
+        steps {
                 echo("Start build...")
                 echo("Pause build 10s...")
                 sleep(10)
