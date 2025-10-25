@@ -33,14 +33,16 @@ pipeline {
                  }
             }
             stages {
-                stage("Prepare 1") {
+                stage("Conditional 1") {
                     steps {
-                        echo("Prepare 1")
+                        echo("Conditional 1")
+                        sleep(5)
                     }
                 }
-                stage("Prepare 2") {
+                stage("Conditional 2") {
                     steps {
-                        echo("Prepare 2")
+                        echo("Conditional 2")
+                        sleep(5)
                     }
                 }
             }
