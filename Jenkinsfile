@@ -27,19 +27,24 @@ pipeline {
     }
      stages {
         stage ("Conditional") {
-            agent {
-                 node {
-                 label "linux && java11"
-                 }
-            }
-            stages {
+            parallel {
                 stage("Conditional 1") {
+                    agent {
+                         node {
+                         label "linux && java11"
+                         }
+                    }
                     steps {
                         echo("Conditional 1")
                         sleep(5)
                     }
                 }
                 stage("Conditional 2") {
+                    agent {
+                         node {
+                         label "linux && java11"
+                         }
+                    }
                     steps {
                         echo("Conditional 2")
                         sleep(5)
