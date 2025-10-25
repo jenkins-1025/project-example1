@@ -97,6 +97,9 @@ pipeline {
                 message "Mau deploy?"
                 ok "Yeah, deploy sekarang"
                 submitter "hasan, user"
+                parameters {
+                    choice(name: "ENV_TARGET", choices: ['DEVEL','STAGING','PRODUCTION'], description: "Pilih Environment?")
+                }
             }
             agent {
                 node {
