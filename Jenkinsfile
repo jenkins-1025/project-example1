@@ -9,6 +9,10 @@ pipeline {
         AUTHOR = "M. Hasan"
         EMAIL = "hasanmuhammad197@gmail.com"
     }
+    options {
+        disableConcurrentBuilds()
+        timeout(time:10, unit:'MINUTES')
+    }
      stages {
         stage ("Prepare") {
             environment {
