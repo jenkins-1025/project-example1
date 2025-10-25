@@ -26,6 +26,25 @@ pipeline {
         timeout(time:10, unit:'MINUTES')
     }
      stages {
+        stage ("Conditional") {
+            agent {
+                 node {
+                 label "linux && java11"
+                 }
+            }
+            stages {
+                stage("Prepare 1") {
+                    steps {
+                        echo("Prepare 1")
+                    }
+                }
+                stage("Prepare 2") {
+                    steps {
+                        echo("Prepare 2")
+                    }
+                }
+            }
+        }
         stage ("Parameter") {
             agent {
                 node {
