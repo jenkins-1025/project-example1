@@ -12,7 +12,7 @@
 	<artifactId>belajar-spring-dasar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>belajar-spring-dasar</name>
-	<description>Belajar Spring Dasar</description>
+	<description>Belajar Spring Dasar 1</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
