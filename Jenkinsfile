@@ -28,9 +28,14 @@ pipeline {
         }
         stage ("Deploy") {
             steps {
-                echo("Hello Deploy I")
-                echo("Hello Deploy II")
-                echo("Hello Deploy III")
+                echo("Hello Deploy ")
+                script{
+                    def data = [
+                        "firstName": "M.",
+                        "lastName": "Hasan"
+                    ]
+                    writeJSON(file: "data.json", json: data)
+                }
             }
         }
      }
