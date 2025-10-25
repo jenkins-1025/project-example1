@@ -18,6 +18,11 @@ pipeline {
             steps {
                 echo("Hello Test A")
                 sh("./mvnw test")
+                script {
+                    for (int i = 0; i < 10; i++) {
+                        echo("Script ${i}")
+                    }
+                }
                 //sh("error")
             }
         }
