@@ -108,6 +108,7 @@ pipeline {
             }
             steps {
                 echo("Hello Deploy ")
+                echo("Already Deploy to ${ENV_TARGET} ")
                 script{
                     def data = [
                         "firstName": "M.",
