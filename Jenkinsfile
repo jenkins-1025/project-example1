@@ -10,7 +10,9 @@ pipeline {
         EMAIL = "hasanmuhammad197@gmail.com"
     }
     triggers {
-        cron("*/5 * * * *")
+        //cron("*/5 * * * *")
+        pollSCM("* * * * *")
+        //upstream(upstreamProjects: 'job1,job2', threshold: hudson.model.Result.SUCCESS)
     }
     parameters {
         string(name:"NAME", defaultValue:"Guest", description:"What is your name?")
