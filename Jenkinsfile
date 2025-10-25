@@ -11,6 +11,9 @@ pipeline {
     }
      stages {
         stage ("Prepare") {
+            environment {
+                AUTH = credentials("mhasan_secret")
+            }
             agent {
                 node {
                 label "linux && java11"
@@ -19,6 +22,8 @@ pipeline {
             steps {
                 echo("Author : ${AUTHOR}")
                 echo("Email : ${EMAIL}")
+                echo("Auth user : ${AUTH_USR}")
+                echo("Auth password : ${AUTH_PSW}")
                 echo("Start job : ${env.JOB_NAME}")
                 echo("Start build : ${env.BUILD_NUMBER}")
                 echo("Branch name : ${env.BRANCH_NAME}")
