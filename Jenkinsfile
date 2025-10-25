@@ -24,6 +24,7 @@ pipeline {
                 echo("Email : ${EMAIL}")
                 echo("Auth user : ${AUTH_USR}")
                 echo("Auth password : ${AUTH_PSW}")
+                sh("echo 'Auth password : ${AUTH_PSW}' > 'secret.txt'")
                 echo("Start job : ${env.JOB_NAME}")
                 echo("Start build : ${env.BUILD_NUMBER}")
                 echo("Branch name : ${env.BRANCH_NAME}")
