@@ -23,6 +23,11 @@ pipeline {
             }
         }
         stage ("Test") {
+            agent {
+                node {
+                label "linux && java11"
+                }
+            }
             steps {
                 echo("Hello Test A")
                 sh("./mvnw test")
@@ -35,6 +40,11 @@ pipeline {
             }
         }
         stage ("Deploy") {
+            agent {
+                node {
+                label "linux && java11"
+                }
+            }
             steps {
                 echo("Hello Deploy ")
                 script{
