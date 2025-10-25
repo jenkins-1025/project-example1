@@ -26,6 +26,32 @@ pipeline {
         timeout(time:10, unit:'MINUTES')
     }
      stages {
+        stage ("OS Setup") {
+            matrix {
+                axes {
+                    axis {
+                        name "OS"
+                        values "linux", "windows", "mac"
+                    }
+                    axis {
+                        name "ARC"
+                        values "32", "64"
+                    }
+                }
+            }
+            stages {
+                stage("OS Setup") {
+                    agent {
+                        node {
+                            label "linux && java11"
+                        }
+                    }
+                    steps {
+                        echo "Setup for ${OS} ${ARC}"
+                    }
+                }
+            }
+        }
         stage ("Conditional") {
             parallel {
                 stage("Conditional 1") {
@@ -36,7 +62,6 @@ pipeline {
                     }
                     steps {
                         echo("Conditional 1")
-                        sleep(5)
                     }
                 }
                 stage("Conditional 2") {
@@ -47,7 +72,6 @@ pipeline {
                     }
                     steps {
                         echo("Conditional 2")
-                        sleep(5)
                     }
                 }
             }
@@ -95,8 +119,8 @@ pipeline {
             }
             steps {
                 echo("Start build...")
-                echo("Pause build 5s...")
-                sleep(5)
+                echo("Pause build 3s...")
+                sleep(3)
                 sh("./mvnw clean compile test-compile")
                 echo("Finish build...")
             }
@@ -111,7 +135,7 @@ pipeline {
                 echo("Hello Test A")
                 sh("./mvnw test")
                 script {
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < 3; i++) {
                         echo("Script ${i}")
                     }
                 }
