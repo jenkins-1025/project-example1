@@ -10,12 +10,14 @@ pipeline {
                 echo("Start build...")
                 echo("Pause build 10s...")
                 sleep(10)
+                sh("./mvnw clean compile test-compile")
                 echo("Finish build...")
             }
         }
         stage ("Test") {
             steps {
                 echo("Hello Test A")
+                sh("./mvnw test")
                 //sh("error")
             }
         }
