@@ -9,11 +9,11 @@ pipeline {
         AUTHOR = "M. Hasan"
         EMAIL = "hasanmuhammad197@gmail.com"
     }
-    triggers {
+    //triggers {
         //cron("*/5 * * * *")
-        pollSCM("* * * * *")
+        //pollSCM("* * * * *")
         //upstream(upstreamProjects: 'job1,job2', threshold: hudson.model.Result.SUCCESS)
-    }
+    //}
     parameters {
         string(name:"NAME", defaultValue:"Guest", description:"What is your name?")
         text(name:"DESCRIPTION", defaultValue:"Guest", description:"Tell me about you?")
@@ -69,8 +69,8 @@ pipeline {
             }
             steps {
                 echo("Start build...")
-                echo("Pause build 10s...")
-                sleep(10)
+                echo("Pause build 5s...")
+                sleep(5)
                 sh("./mvnw clean compile test-compile")
                 echo("Finish build...")
             }
@@ -93,6 +93,11 @@ pipeline {
             }
         }
         stage ("Deploy") {
+            input {
+                message "Mau deploy?"
+                ok "Yeah, deploy sekarang"
+                submitter "hasan, user"
+            }
             agent {
                 node {
                 label "linux && java11"
